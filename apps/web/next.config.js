@@ -21,9 +21,20 @@ const nextConfig = {
       });
     }
     if (astroOrigin) {
+      const astroBase = stripTrailingSlash(astroOrigin);
+      // Astro is deployed at / on its own host (e.g. /blogs, not /astro/blogs).
       rules.push({
-        source: "/astro/:path*",
-        destination: `${stripTrailingSlash(astroOrigin)}/astro/:path*`,
+        source: "/blogs",
+        destination: `${astroBase}/blogs`,
+      });
+      rules.push({
+        source: "/blogs/:path*",
+        destination: `${astroBase}/blogs/:path*`,
+      });
+      // Built assets stay under /_astro on the Astro host; browser requests them on the web domain too.
+      rules.push({
+        source: "/_astro/:path*",
+        destination: `${astroBase}/_astro/:path*`,
       });
     }
     return rules;
