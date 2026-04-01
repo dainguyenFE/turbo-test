@@ -1,0 +1,29 @@
+{
+  "name": "astro",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --port 4321",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint --max-warnings 0",
+    "check-types": "astro check"
+  },
+  "dependencies": {
+    "astro": "^6.1.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/node": "^22.15.3",
+    "eslint": "^9.39.1",
+    "eslint-plugin-astro": "^1.5.0",
+    "typescript": "5.9.2"
+  }
+}
