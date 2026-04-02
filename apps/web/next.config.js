@@ -11,7 +11,12 @@ const nextConfig = {
    */
   async rewrites() {
     const docsOrigin = process.env.DOCS_MICROFRONTEND_URL;
-    const astroOrigin = process.env.ASTRO_MICROFRONTEND_URL;
+    // Local `yarn dev` / turbo: Astro runs on :4321 — no .env.local required unless you use another port/host.
+    const astroOrigin =
+      process.env.ASTRO_MICROFRONTEND_URL ||
+      (process.env.NODE_ENV !== "production"
+        ? "http://127.0.0.1:4321"
+        : undefined);
     const rules = [];
 
     if (docsOrigin) {
