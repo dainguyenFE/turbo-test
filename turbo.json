@@ -1,11 +1,16 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
   "ui": "tui",
+  "globalPassThroughEnv": [
+    "ASTRO_MICROFRONTEND_URL",
+    "DOCS_MICROFRONTEND_URL"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "env": ["ASTRO_MICROFRONTEND_URL", "DOCS_MICROFRONTEND_URL"]
     },
     "lint": {
       "dependsOn": ["^lint"]
